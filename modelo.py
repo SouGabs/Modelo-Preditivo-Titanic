@@ -1,28 +1,55 @@
+"""
+Análise exploratória e pré-processamento do Titanic-Dataset-Modificado.csv.
+
+Etapas (cada bloco `# %%` é uma célula executável no VS Code / Jupyter):
+    1. Limpeza de texto sujo (idades como "Age 38", vírgula decimal, valores impossíveis).
+    2. Winsorização de Fare, one-hot encoding, FamilySize e extração de títulos.
+    3. Gráficos exploratórios (taxa de sobrevivência por variável, correlação).
+    4. Imputação de Age/Pclass/Sex/Embarked por K-Means (k escolhido pelo cotovelo),
+       com validação contra a baseline de mediana/moda global.
+    5. Reescala (StandardScaler), split estratificado e balanceamento com SMOTE.
+
+Saídas (ignoradas pelo git): titanic_treino_final.csv, titanic_teste_final.csv e scaler.pkl.
+
+Observação: este script é o estudo de pré-processamento. O modelo usado pela aplicação
+web é treinado separadamente em ml/treinar_modelo.py.
+
+Uso (a partir da raiz do projeto):
+    python modelo.py
+"""
 # %% Bibliotecas necessárias
-  
-import pandas as pd
-from sklearn.preprocessing import StandardScaler
-import numpy as np
-from sklearn.cluster import KMeans
-from sklearn.metrics import silhouette_score
+
+import joblib
 import matplotlib.pyplot as plt
-from kneed import KneeLocator
-from sklearn.model_selection import train_test_split
+import numpy as np
+import pandas as pd
 import seaborn as sns
 from imblearn.over_sampling import SMOTE
+from kneed import KneeLocator
+from sklearn.cluster import KMeans
+from sklearn.metrics import silhouette_score
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
 
-# %% Função parar carregar os arquivos
+# %% Função para carregar os arquivos
 def carregar_dados(caminho_arquivo):
     """
-    Carrega os dados de um arquivo CSV e retorna um DataFrame do pandas.
+    Carrega um arquivo CSV em um DataFrame do pandas.
 
+    Parâmetros:
+        caminho_arquivo (str | Path): caminho do CSV.
+
+    Retorna:
+        pd.DataFrame com os dados.
+
+    Levanta:
+        A exceção original do pandas se a leitura falhar (a mensagem é impressa antes).
     """
     try:
-        dados = pd.read_csv(caminho_arquivo)
-        return dados
+        return pd.read_csv(caminho_arquivo)
     except Exception as e:
         print(f"Erro ao carregar o arquivo: {e}")
-        return None
+        raise
 
 # Carregando os dados 
 df = carregar_dados('Titanic-Dataset-Modificado.csv').drop_duplicates().reset_index(drop=True)
@@ -35,7 +62,15 @@ df.head(5)
 
 def para_numerico(serie):
     """
-    Converte texto sujo (vírgula decimal, letras, espaços) em número; o que não der vira NaN.
+    Converte texto sujo (vírgula decimal, letras, espaços) em número.
+
+    Exemplos: "Age 38" -> 38.0, "22 years old" -> 22.0, "7,25" -> 7.25, "abc" -> NaN.
+
+    Parâmetros:
+        serie (pd.Series): coluna com valores numéricos possivelmente em texto.
+
+    Retorna:
+        pd.Series de float; o que não puder ser convertido vira NaN.
     """
     return pd.to_numeric(serie
                          .astype(str)
@@ -89,7 +124,7 @@ print(df[colunas_para_tratar].describe())
 
 
 """
-Apliccando o one-hot encoding para a coluna "Embarked" e 
+Aplicando o one-hot encoding para a coluna "Embarked" e 
 criando uma nova coluna "FamilySize" que é a soma de "SibSp" e "Parch" mais 1 
 (para incluir o próprio passageiro). Também extraindo títulos dos nomes e aplicando 
 one-hot encoding para a coluna "Title" e assim poder prever com mais acertividade o genero dos passageiros. 
@@ -137,7 +172,7 @@ sns.heatmap(df.select_dtypes("number").corr(), cmap="coolwarm", center=0); plt.s
 
 """
 Separando as features a serem usadas no kmeans, 
-dividindo o dataframe em commpletos (sem nnulos) e incompletos(com nulos)
+dividindo o dataframe em completos (sem nulos) e incompletos (com nulos)
 no final o objetivo é ter o dataset2 sem nulos e balanceado
 """
 
@@ -156,21 +191,23 @@ dummies_de = {
 
 def mascarar_dummies(dados):
     """
-    Onde a coluna original é NaN, as dummies dela também viram NaN.
+    Propaga os NaN de cada coluna original para as dummies dela.
+
     Sem isso, o get_dummies deixa 0,0,0 e o K-means interpreta
     esses zeros como informação observada.
+
+    Parâmetros:
+        dados (pd.DataFrame): DataFrame com as colunas de `dummies_de`.
+
+    Retorna:
+        Cópia do DataFrame com as dummies mascaradas (o original não é alterado).
     """
     dados = dados.copy()
-    
+
     for origem, dums in dummies_de.items():
         dados.loc[dados[origem].isna(), dums] = np.nan
 
-    return dados# Cada coluna imputada -> as dummies dela que entram no K-means
-
-dummies_de = {
-    "Pclass":   ["P_1.0", "P_2.0", "P_3.0"],
-    "Embarked": ["Embarked_0.0", "Embarked_1.0", "Embarked_2.0"],
-}
+    return dados
 
 
 
@@ -184,13 +221,18 @@ atributo_alvo = mascarar_dummies(atributo_alvo)
 nulos_features = dataset2[features].isna().sum()
 assert nulos_features.sum() == 0, f"Features com NaN nos completos:\n{nulos_features[nulos_features > 0]}"
 # %% 
-def outliers_boxplot(data):   
+def outliers_boxplot(data):
+    """
+    Exibe um boxplot da coluna 'Fare' para inspecionar outliers após a winsorização.
+
+    Parâmetros:
+        data (pd.DataFrame): DataFrame que contenha a coluna 'Fare'.
+    """
     plt.figure(figsize=(8, 5))
     sns.boxplot(x=data['Fare'])
-    plt.title(f'Identificação de Outliers com Boxplot ')
+    plt.title('Identificação de Outliers com Boxplot')
     plt.xlabel('Valores')
     plt.show()
-    return 
 
 outliers_boxplot(dataset2)
 outliers_boxplot(atributo_alvo)
@@ -203,7 +245,20 @@ usando a biblioteca kneed para identificar o melhor valor para k
 """
 
 def avaliar_k(X, titulo, ks=range(2, 11)):
+    """
+    Escolhe o número de clusters do K-Means e plota as curvas de cotovelo e silhueta.
 
+    Os dados são padronizados antes do ajuste. O k é o "joelho" da curva de inércia
+    detectado pelo KneeLocator; se não houver joelho, usa o k de maior silhueta.
+
+    Parâmetros:
+        X (pd.DataFrame | np.ndarray): features sem NaN.
+        titulo (str): título da figura.
+        ks (iterable[int]): valores de k a testar (padrão: 2 a 10).
+
+    Retorna:
+        int com o k escolhido.
+    """
     X_scaled = StandardScaler().fit_transform(X) 
 
     inercias, silhuetas = [], []
@@ -240,6 +295,24 @@ print("k escolhido:", k_otimo)
 
 
 def imputar_por_cluster(completos, incompletos, k):
+    """
+    Imputa as colunas de `a_imputar` usando estatísticas do cluster mais próximo.
+
+    1. Ajusta StandardScaler + K-Means apenas nos registros completos (sem vazamento).
+    2. Atribui cada registro incompleto ao centróide mais próximo, medindo a distância
+       somente nas features observadas (as que não são NaN).
+    3. Preenche os ausentes com a mediana (Age) ou a moda (Pclass, Sex, Embarked)
+       do cluster atribuído.
+
+    Parâmetros:
+        completos (pd.DataFrame): registros sem nulos em `features`.
+        incompletos (pd.DataFrame): registros com nulos (dummies já mascaradas).
+        k (int): número de clusters.
+
+    Retorna:
+        Tupla (completos, incompletos): cópias com a coluna "cluster"; `incompletos`
+        recebe os valores imputados e as flags booleanas "<coluna>_imputado".
+    """
     completos, incompletos = completos.copy(), incompletos.copy()
 
     scaler = StandardScaler()
@@ -250,6 +323,7 @@ def imputar_por_cluster(completos, incompletos, k):
 
     X_inc = scaler.transform(incompletos[features])             # NaN são preservados
     def cluster_parcial(linha):
+        """Índice do centróide mais próximo, usando só as features observadas da linha."""
         obs = ~np.isnan(linha)
         dist = ((centroides[:, obs] - linha[obs]) ** 2).sum(axis=1) / obs.sum()
         return dist.argmin()
@@ -260,8 +334,6 @@ def imputar_por_cluster(completos, incompletos, k):
         Pclass=("Pclass", lambda s: s.mode()[0]),
         Sex=("Sex", lambda s: s.mode()[0]),
         Embarked=("Embarked", lambda s: s.mode()[0]),
-        
-        
     )
     for col in a_imputar:
         faltando = incompletos[col].isna()
@@ -309,16 +381,13 @@ for col in a_imputar:
         resultados[col]["score"] = teste_imp["cluster"].map(prop_male)
 
 
-        # %%
-        """
-Verificado no inicio do pipeline, tratamento do df, onde apliquei a técnica de 
+# %%
+"""
+1) Outliers: já tratados no início do pipeline, onde apliquei a técnica de
 Capping (Winsorização baseada em percentis) para a coluna 'Fare'.
-"""
 
-# 2) Reescalar os dados
-
-"""
-Possuimos algumas colunas desatualizadas, será nencessário removelas e transformar 
+2) Reescalar os dados:
+Possuímos algumas colunas desatualizadas, será necessário removê-las e transformar
 as colunas categoricas em numéricas novamente, para então reescalar os dados. 
 """
 colunas_para_remover = (
@@ -371,7 +440,6 @@ teste_final  = X_test_scaled.assign(Survived=y_test.values)
 treino_final.to_csv("titanic_treino_final.csv", index=False)
 teste_final.to_csv("titanic_teste_final.csv", index=False)
 
-import joblib
 joblib.dump(scaler, "scaler.pkl")
 
 print(treino_final.shape, teste_final.shape)

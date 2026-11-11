@@ -30,6 +30,22 @@ def para_numerico(serie):
 
 
 def preparar(df):
+    """
+    Limpa e imputa o dataset bruto, deixando-o pronto para o treino.
+
+    - Remove duplicatas e converte Age/Fare/SibSp/Parch de texto sujo para número.
+    - Descarta valores impossíveis (negativos, idade > 100, classe fora de 1-3).
+    - Codifica Sex (female=0, male=1), Embarked (C=0, Q=1, S=2) e Survived (0/1).
+    - Imputa Sex e Age pelo título do nome (Mr, Mrs, Miss, Master, Rare); o restante
+      pela moda/mediana global.
+    - Cria FamilySize = SibSp + Parch + 1.
+
+    Parâmetros:
+        df (pd.DataFrame): dados brutos lidos de Titanic-Dataset-Modificado.csv.
+
+    Retorna:
+        Novo DataFrame sem nulos nas FEATURES, apenas com linhas de Survived conhecido.
+    """
     df = df.drop_duplicates().reset_index(drop=True).copy()
     for col in ["Age", "Fare", "SibSp", "Parch"]:
         df[col] = para_numerico(df[col])
@@ -58,6 +74,18 @@ def preparar(df):
 
 
 def exportar_arvore(estimador):
+    """
+    Serializa uma DecisionTreeRegressor do GBT no formato compacto lido por web/src/model/inference.js.
+
+    Cada chave é uma lista indexada pelo id do nó: f (feature, -2 = folha), t (limiar),
+    l/r (filho esquerdo/direito, -1 = folha), v (valor do nó) e n (amostras no nó).
+
+    Parâmetros:
+        estimador (DecisionTreeRegressor): uma árvore de `modelo.estimators_`.
+
+    Retorna:
+        dict serializável em JSON.
+    """
     t = estimador.tree_
     return {
         "f": t.feature.tolist(),               # índice da feature (-2 = folha)
@@ -70,7 +98,16 @@ def exportar_arvore(estimador):
 
 
 def main():
-    df = preparar(pd.read_csv(CSV))
+    """
+    Treina, avalia e exporta o modelo.
+
+    1. Validação cruzada estratificada (5 folds) para a acurácia média.
+    2. Hold-out de 20% para precisão, recall, F1 e ROC-AUC.
+    3. Modelo final treinado com todos os registros e exportado para SAIDA (model.json),
+       junto com métricas, importâncias e estatísticas do dataset exibidas na web.
+    """
+    bruto = pd.read_csv(CSV)
+    df = preparar(bruto)
     X, y = df[FEATURES].astype(float), df["Survived"].astype(int)
 
     params = dict(n_estimators=150, learning_rate=0.05, max_depth=3, subsample=0.9, random_state=42)
@@ -104,7 +141,7 @@ def main():
         },
         "dataset": {
             "rows": int(len(df)),
-            "rawRows": int(len(pd.read_csv(CSV))),
+            "rawRows": int(len(bruto)),
             "survivalRate": round(float(y.mean()), 4),
             "meanAge": round(float(df["Age"].mean()), 1),
             "bySex": agrupado("Sex"),
