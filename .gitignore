@@ -1,20 +1,30 @@
 # Node / Vite
 node_modules/
 web/dist/
+*.local
 *.log
+npm-debug.log*
 
 # Python
 __pycache__/
-*.pyc
+*.py[cod]
 .ipynb_checkpoints/
+.venv/
+venv/
+env/
 
 # Artefatos gerados por modelo.py
 titanic_treino_final.csv
 titanic_teste_final.csv
 scaler.pkl
 
+# Variáveis de ambiente
+.env
+.env.*
+
 # Editor / ferramentas locais
 .vscode/
+.idea/
 .claude/
 .DS_Store
 Thumbs.db
