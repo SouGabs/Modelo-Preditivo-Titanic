@@ -12,11 +12,13 @@ const TABS = [
 ]
 const ACCURACY = (MODEL.metrics.cvAccuracy * 100).toFixed(1).replace('.', ',')
 
+/** Aba ativa a partir do hash da URL (#simulador, #registros, #modelo); padrão: simulador. */
 const readHash = () => {
   const h = window.location.hash.replace('#', '')
   return TABS.some((t) => t.id === h) ? h : 'simulador'
 }
 
+/** Emblema da White Star Line (flâmula + estrela) usado no cabeçalho. */
 function Emblem({ className = '' }) {
   return (
     <svg viewBox="0 0 40 40" className={className} aria-hidden>
@@ -27,6 +29,10 @@ function Emblem({ className = '' }) {
   )
 }
 
+/**
+ * Raiz da aplicação: cabeçalho, navegação (topo no desktop, barra inferior no mobile)
+ * e roteamento simples por hash entre Simulador, Registros e Sobre o Modelo.
+ */
 export default function App() {
   const [tab, setTab] = useState(readHash)
 

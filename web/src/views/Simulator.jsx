@@ -25,6 +25,11 @@ function Option({ checked, onSelect, className = '', children, label }) {
   )
 }
 
+/**
+ * Tela principal: formulário do passageiro com inferência em tempo real e
+ * probabilidades contrafactuais para cada opção de gênero, classe e porto.
+ * @param {{accuracy: string}} props Acurácia já formatada (ex.: "81,9") exibida no chip.
+ */
 export default function Simulator({ accuracy }) {
   const [form, setForm] = useState(DEFAULT)
   const [stamp, setStamp] = useState(0)

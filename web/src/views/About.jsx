@@ -20,6 +20,7 @@ const PIPELINE = [
   { icon: 'deployed_code', title: 'Exportação para o navegador', text: 'As árvores são serializadas em JSON e percorridas em JavaScript: a inferência é instantânea e não depende de servidor.' },
 ]
 
+/** Sobre o modelo: métricas, importância das variáveis, pipeline de dados e hiperparâmetros. */
 export default function About() {
   const m = MODEL.metrics
   const ds = MODEL.dataset

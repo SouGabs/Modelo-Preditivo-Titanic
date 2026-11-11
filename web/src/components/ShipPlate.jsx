@@ -1,6 +1,8 @@
 /**
  * Placa ilustrada do transatlântico — silhueta vetorial original em latão sobre mar noturno
  * (substitui fotografias externas; renderiza offline e nítida em qualquer densidade).
+ * @param {{caption?: string, title?: string, badge?: string, className?: string, compact?: boolean}} props
+ *   `badge` vazio oculta o selo; `compact` reduz a altura da ilustração.
  */
 export default function ShipPlate({ caption = 'Royal Mail Steamer Titanic', title = 'Casco nº 401 • 46.328 Toneladas', badge = 'Harland & Wolff', className = '', compact = false }) {
   const portholes = Array.from({ length: 34 }, (_, i) => i)

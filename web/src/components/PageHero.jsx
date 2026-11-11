@@ -1,5 +1,9 @@
 import { Chip } from './ui.jsx'
 
+/**
+ * Cabeçalho de página: chip opcional + sobretítulo, título em serifa e parágrafo de introdução (children).
+ * @param {{eyebrow: string, title: string, chip?: string, children: React.ReactNode}} props
+ */
 export default function PageHero({ eyebrow, title, children, chip }) {
   return (
     <section className="border-b border-gold/10 bg-surface">
@@ -15,7 +19,10 @@ export default function PageHero({ eyebrow, title, children, chip }) {
   )
 }
 
-/** Linha de barra horizontal para ledgers de taxas. */
+/**
+ * Linha de barra horizontal para ledgers de taxas.
+ * @param {{label: string, value: number, sub?: string, tone?: 'gold'|'oxide'}} props `value` é uma fração em [0, 1].
+ */
 export function RateRow({ label, value, sub, tone = 'gold' }) {
   return (
     <li className="group relative py-3 pl-3 transition-colors hover:bg-instrument">

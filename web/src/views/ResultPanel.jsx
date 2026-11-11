@@ -2,6 +2,7 @@ import { Card, Icon, LedgerField } from '../components/ui.jsx'
 import Gauge from '../components/Gauge.jsx'
 import { BASE_PROBABILITY, CLASSES, FEATURE_LABEL, PORTS, probableLifeboat, riskBand } from '../model/inference.js'
 
+/** Tratamento de época do passageiro (Cavalheiro, Dama, Jovem Master, Senhorita). */
 function designation({ sex, age }) {
   if (sex === 'male') return age <= 14 ? 'Jovem Master' : 'Cavalheiro'
   return age <= 14 ? 'Senhorita' : 'Dama'
@@ -13,12 +14,19 @@ function ticketNumber({ sex, age, pclass, family, embarked }, stamp) {
   return 24000 + (seed % 2000)
 }
 
+/** Formata pontos percentuais com sinal explícito (+3, −12), usando o sinal de menos tipográfico. */
 const fmtPoints = (v) => {
   const r = Math.round(v)
   if (r === 0) return v >= 0 ? '+0' : '−0'
   return r > 0 ? `+${r}` : `−${Math.abs(r)}`
 }
 
+/**
+ * Resultado da simulação: bilhete, medidor de probabilidade, faixa de risco,
+ * bote provável e pesos de cada variável.
+ * @param {{form: object, result: ReturnType<typeof import('../model/inference.js').predict>, stamp: number}} props
+ *   `stamp` incrementa a cada "registro" e varia o número do bilhete.
+ */
 export default function ResultPanel({ form, result, stamp }) {
   const { probability, contributions } = result
   const risk = riskBand(probability)

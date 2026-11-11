@@ -1,6 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
 
-/** Anima um número até o alvo (easing de telégrafo mecânico). */
+/**
+ * Anima um número até o alvo (easing cúbico, como um telégrafo mecânico).
+ * @param {number} target Valor final.
+ * @param {number} [duration=650] Duração da animação em ms.
+ * @returns {number} Valor intermediário do quadro atual.
+ */
 export function useAnimatedNumber(target, duration = 650) {
   const [value, setValue] = useState(target)
   const from = useRef(target)
@@ -25,6 +30,8 @@ export function useAnimatedNumber(target, duration = 650) {
 /**
  * Telegraph Dial — medidor circular de confiança (DESIGN.md §7):
  * marcas mecânicas, arco de latão/oxide, ponteiro dourado e escore em Garamond no núcleo.
+ * @param {{probability: number, size?: number, compact?: boolean}} props
+ *   `probability` em [0, 1]; `size` em px; `compact` oculta a escala 0–100.
  */
 export default function Gauge({ probability, size = 220, compact = false }) {
   const p = useAnimatedNumber(probability)

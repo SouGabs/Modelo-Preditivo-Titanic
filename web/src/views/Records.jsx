@@ -25,6 +25,10 @@ const TIMELINE = [
 const CLASS_LABEL = { 1: '1ª Classe', 2: '2ª Classe', 3: '3ª Classe' }
 const PORT_LABEL = { 0: 'Cherbourg', 1: 'Queenstown', 2: 'Southampton' }
 
+/**
+ * Registros históricos: números do naufrágio, linha do tempo e taxas de sobrevivência do dataset.
+ * @param {{onSimulate: () => void}} props Callback do botão que leva ao simulador.
+ */
 export default function Records({ onSimulate }) {
   const ds = MODEL.dataset
   return (

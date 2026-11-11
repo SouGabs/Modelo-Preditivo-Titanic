@@ -1,5 +1,9 @@
 /** Componentes atômicos do design system "Transatlantic Oceanic Registry". */
 
+/**
+ * Ícone do Material Symbols. Decorativo (aria-hidden) a menos que `label` seja informado.
+ * @param {{name: string, className?: string, fill?: boolean, label?: string}} props
+ */
 export function Icon({ name, className = '', fill = false, label }) {
   return (
     <span className={`icon ${fill ? 'icon-fill' : ''} ${className}`} aria-hidden={label ? undefined : true} aria-label={label}>
@@ -41,6 +45,7 @@ export function Chip({ tone = 'gold', children, className = '' }) {
   )
 }
 
+/** Indicador dourado pulsante de "sistema ativo". */
 export function StatusDot({ className = '' }) {
   return (
     <span className={`relative inline-flex h-1.5 w-1.5 ${className}`}>
@@ -50,6 +55,7 @@ export function StatusDot({ className = '' }) {
   )
 }
 
+/** Botão primário dourado; repassa as demais props ao <button>. */
 export function GildedButton({ children, className = '', ...rest }) {
   return (
     <button type="button" className={`btn-gilded ${className}`} {...rest}>

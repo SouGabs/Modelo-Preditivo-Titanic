@@ -33,7 +33,11 @@ function hydrate(tree) {
 }
 const TREES = model.trees.map(hydrate)
 
-/** Converte o formulário em vetor de features na mesma ordem do treino. */
+/**
+ * Converte o formulário em vetor de features na mesma ordem e codificação do treino.
+ * @param {{sex: string, age: number|string, pclass: number|string, family: number|string, embarked: string}} passenger
+ * @returns {number[]} Vetor alinhado a FEATURES.
+ */
 export function toVector({ sex, age, pclass, family, embarked }) {
   const row = {
     Sex: sex === 'male' ? 1 : 0,
@@ -45,6 +49,14 @@ export function toVector({ sex, age, pclass, family, embarked }) {
   return FEATURES.map((f) => row[f])
 }
 
+/**
+ * Calcula a probabilidade de sobrevivência e a contribuição de cada variável.
+ *
+ * @param {{sex: 'male'|'female', age: number, pclass: 1|2|3, family: number, embarked: 'C'|'Q'|'S'}} passenger
+ *   Dados do formulário (`family` = parentes a bordo, sem contar o passageiro).
+ * @returns {{probability: number, logit: number, contributions: {feature: string, logit: number, points: number}[]}}
+ *   `probability` em [0, 1]; `points` em pontos percentuais, somando (probability − BASE_PROBABILITY) × 100.
+ */
 export function predict(passenger) {
   const x = toVector(passenger)
   const lr = model.learningRate
@@ -72,7 +84,11 @@ export function predict(passenger) {
   return { probability, logit, contributions }
 }
 
-/** Faixas de risco usadas no medidor. */
+/**
+ * Faixa de risco usada no medidor e nos rótulos do resultado.
+ * @param {number} p Probabilidade de sobrevivência em [0, 1].
+ * @returns {{label: string, tone: 'oxide'|'amber'|'gold', short: string}}
+ */
 export function riskBand(p) {
   if (p < 0.15) return { label: 'Risco Extremo de Naufrágio', tone: 'oxide', short: 'Extremo' }
   if (p < 0.35) return { label: 'Risco Elevado de Naufrágio', tone: 'oxide', short: 'Elevado' }
@@ -84,6 +100,9 @@ export function riskBand(p) {
 /**
  * Bote provável — camada narrativa sobre a probabilidade do modelo,
  * inspirada na ordem real de lançamento dos botes (não é saída do GBT).
+ * @param {number} p Probabilidade de sobrevivência em [0, 1].
+ * @param {{sex: string, age: number, pclass: number}} passenger
+ * @returns {{boat: string, note: string, side: string|null}}
  */
 export function probableLifeboat(p, { sex, age, pclass }) {
   if (p < 0.25) return { boat: 'Nenhum', note: 'Esgotamento da coberta', side: null }
@@ -101,6 +120,7 @@ export function probableLifeboat(p, { sex, age, pclass }) {
   return { boat: 'Bote 16', note: 'Lançado à 01:35 · popa', side: 'Bombordo' }
 }
 
+/** Rótulo legível de cada variável, montado a partir dos dados do passageiro. */
 export const FEATURE_LABEL = {
   Sex: (p) => (p.sex === 'male' ? 'Gênero Masculino' : 'Gênero Feminino'),
   Age: (p) => `Idade (${p.age} anos)`,
@@ -109,12 +129,14 @@ export const FEATURE_LABEL = {
   Embarked: (p) => `Porto de ${PORTS[p.embarked].name}`,
 }
 
+/** Metadados de exibição dos portos de embarque (chave = código de Embarked). */
 export const PORTS = {
   S: { name: 'Southampton', date: '10 de Abril', time: 'Manhã', note: '70% do contingente total', fare: 'Inglaterra' },
   C: { name: 'Cherbourg', date: '10 de Abril', time: 'Entardecer', note: 'Alta proporção de 1ª classe', fare: 'França' },
   Q: { name: 'Queenstown', date: '11 de Abril', time: 'Irlanda', note: 'Maioria emigrantes 3ª classe', fare: 'Irlanda' },
 }
 
+/** Metadados de exibição de cada classe do bilhete (chave = Pclass). */
 export const CLASSES = {
   1: { title: '1ª Classe', name: 'Salões Nobres', decks: 'Conveses A, B, C', deckShort: 'A-C', desc: 'Salões nobres, acesso direto aos botes', fare: '£ 60 6s', berth: 'Conveses A-C (Salões Nobres)', icon: 'stars' },
   2: { title: '2ª Classe', name: 'Intermediária', decks: 'Conveses D, E', deckShort: 'D-E', desc: 'Acomodações intermediárias de passagem', fare: '£ 14 5s', berth: 'Conveses D/E (Meia-nau)', icon: 'chair' },
