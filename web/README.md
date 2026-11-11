@@ -1,7 +1,7 @@
 # White Star Line · Simulador de Sobrevivência
 
 Aplicação React + Vite + Tailwind seguindo o design system **Transatlantic Oceanic Registry**
-(`stitch_titanic_survival_predictor/.../DESIGN.md`).
+([`design/DESIGN.md`](../design/DESIGN.md)).
 
 ## Rodar
 

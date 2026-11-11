@@ -11,7 +11,7 @@ o medidor de risco e o peso de cada variável são recalculados em tempo real, d
 
 | Desktop | Mobile |
 | --- | --- |
-| ![Desktop](stitch_titanic_survival_predictor/stitch_titanic_survival_predictor/simulador_de_sobreviv_ncia_rms_titanic_desktop/screen2.png) | ![Mobile](stitch_titanic_survival_predictor/stitch_titanic_survival_predictor/simulador_de_sobreviv_ncia_rms_titanic/screen.png) |
+| ![Desktop](design/tela-desktop.png) | ![Mobile](design/tela-mobile.png) |
 
 <sub>Telas de referência do design system "Transatlantic Oceanic Registry".</sub>
 
@@ -21,7 +21,7 @@ o medidor de risco e o peso de cada variável são recalculados em tempo real, d
   percorridas em JavaScript, reproduzindo exatamente o `predict_proba` do sklearn, sem servidor.
 - **Explicabilidade:** contribuição de cada variável em pontos percentuais (atribuição por caminho nas árvores, aproximação de SHAP).
 - **Cenários contrafactuais:** cada opção do formulário mostra a probabilidade que o passageiro teria se ela fosse escolhida.
-- **Design system próprio:** paleta, tipografia (EB Garamond + Manrope) e componentes definidos em `DESIGN.md`, totalmente responsivo.
+- **Design system próprio:** paleta, tipografia (EB Garamond + Manrope) e componentes definidos em [`design/DESIGN.md`](design/DESIGN.md), totalmente responsivo.
 
 ## Métricas do modelo
 
@@ -40,20 +40,33 @@ Variáveis: `Sex`, `Age`, `Pclass`, `FamilySize` (SibSp + Parch + 1) e `Embarked
 ├── Titanic-Dataset-Modificado.csv   # dataset bruto (com ruído proposital)
 ├── modelo.py                        # análise exploratória, imputação por K-Means e SMOTE
 ├── ml/treinar_modelo.py             # treino do GBT e exportação para web/src/model/model.json
+├── requirements.txt                 # dependências Python
 ├── web/                             # aplicação React + Vite + Tailwind
-└── stitch_titanic_survival_predictor/  # design system e telas de referência
+└── design/                          # design system (DESIGN.md) e telas de referência
 ```
 
 ## Como rodar
+
+Requer Node.js 18+.
 
 ```bash
 cd web
 npm install
 npm run dev        # http://localhost:5173
+npm run build      # build de produção em web/dist/
 ```
 
-Para retreinar o modelo (requer Python com pandas, numpy e scikit-learn):
+## Python (modelo e análise)
+
+Requer Python 3.10+.
 
 ```bash
-python ml/treinar_modelo.py
+python -m venv .venv
+.venv\Scripts\activate          # Windows  (Linux/macOS: source .venv/bin/activate)
+pip install -r requirements.txt
+
+python ml/treinar_modelo.py     # retreina o GBT e atualiza web/src/model/model.json
+python modelo.py                # estudo de pré-processamento (gera CSVs de treino/teste e scaler.pkl)
 ```
+
+`modelo.py` é organizado em células `# %%`, que podem ser executadas uma a uma no VS Code ou Jupyter.
