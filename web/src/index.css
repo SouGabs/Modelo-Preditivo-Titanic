@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    @apply bg-abyss text-parchment font-sans antialiased;
+    min-height: 100dvh;
+    overscroll-behavior-y: none;
+  }
+  ::selection { background: rgba(197, 160, 89, 0.35); color: #F4EFE6; }
+  :focus-visible { outline: 1px solid #C5A059; outline-offset: 2px; }
+}
+
+@layer components {
+  .icon {
+    font-family: 'Material Symbols Outlined';
+    font-weight: 400; font-style: normal; line-height: 1; letter-spacing: normal;
+    text-transform: none; display: inline-block; white-space: nowrap; direction: ltr;
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    -webkit-font-smoothing: antialiased; user-select: none;
+    width: 1em; overflow: hidden;
+  }
+  .icon-fill { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+
+  /* Placas de ledger: rótulos estampados */
+  .ledger-label { @apply font-sans text-label-sm uppercase text-cream; }
+  .tabular { font-variant-numeric: tabular-nums lining-nums; }
+
+  /* Tiers de elevação */
+  .card-plank { @apply bg-plank border border-gold/20 shadow-bevel rounded; }
+  .card-instrument { @apply bg-instrument border border-gold/40 shadow-instrument rounded; }
+
+  /* Botões */
+  .btn-gilded {
+    @apply relative inline-flex items-center justify-center gap-3 rounded border border-gold-bright
+           text-abyss text-label-md uppercase shadow-bevel-strong transition-all duration-200;
+    background-image: linear-gradient(180deg, #C5A059 0%, #9E7B35 100%);
+  }
+  .btn-gilded:hover {
+    background-image: linear-gradient(180deg, #D6B26A 0%, #B08C45 100%);
+    box-shadow: inset 0 2px 0 0 rgba(255, 236, 190, 0.7);
+  }
+  .btn-gilded:active { transform: translateY(1px); }
+
+  .btn-bulkhead {
+    @apply inline-flex items-center justify-center rounded border border-gold/35 bg-plank text-parchment
+           transition-colors duration-150 hover:border-gold/80 hover:bg-slate;
+  }
+
+  /* Seleção ativa (cards de opção) */
+  .option-active {
+    @apply border-gold-bright text-abyss shadow-bevel-strong;
+    background-image: linear-gradient(160deg, #D2AD64 0%, #B8914A 100%);
+  }
+  .option-idle { @apply bg-instrument border-gold/20 text-parchment hover:border-gold/60; }
+
+  /* Linha perfurada do bilhete */
+  .perforation {
+    position: relative; height: 1px;
+    background-image: linear-gradient(90deg, rgba(197, 160, 89, 0.45) 50%, transparent 0);
+    background-size: 10px 1px;
+  }
+  .perforation::before,
+  .perforation::after {
+    content: ""; position: absolute; top: 50%; width: 1.25rem; height: 1.25rem; border-radius: 9999px;
+    background: #0A131E; border: 1px solid rgba(197, 160, 89, 0.2); transform: translateY(-50%);
+  }
+  .perforation::before { left: -0.65rem; }
+  .perforation::after { right: -0.65rem; }
+
+  .ticket-notch {
+    clip-path: polygon(8px 0, calc(100% - 8px) 0, 100% 8px, 100% calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 0 calc(100% - 8px), 0 8px);
+  }
+}
+
+/* Slider de idade — trilho de latão */
+.age-range { -webkit-appearance: none; appearance: none; background: transparent; width: 100%; height: 32px; cursor: pointer; touch-action: pan-y; }
+.age-range:focus { outline: none; }
+.age-range::-webkit-slider-runnable-track {
+  height: 4px; border-radius: 2px;
+  background: linear-gradient(90deg, #C5A059 0%, #C5A059 var(--fill), #283646 var(--fill), #283646 100%);
+}
+.age-range::-moz-range-track { height: 4px; border-radius: 2px; background: #283646; }
+.age-range::-moz-range-progress { height: 4px; border-radius: 2px; background: #C5A059; }
+.age-range::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 22px; height: 22px; margin-top: -9px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #F3D9A0, #C5A059 55%, #9E7B35); border: 1px solid #E0BE7A;
+  box-shadow: 0 0 0 4px rgba(197, 160, 89, 0.15), 0 2px 6px rgba(0, 0, 0, 0.6); transition: box-shadow 0.15s;
+}
+.age-range::-moz-range-thumb {
+  width: 22px; height: 22px; border-radius: 50%; border: 1px solid #E0BE7A;
+  background: radial-gradient(circle at 35% 30%, #F3D9A0, #C5A059 55%, #9E7B35);
+}
+.age-range:focus-visible::-webkit-slider-thumb,
+.age-range:active::-webkit-slider-thumb { box-shadow: 0 0 0 7px rgba(197, 160, 89, 0.3); }
+
+@keyframes rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.animate-rise { animation: rise 0.45s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&amp;family=Manrope:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface":"#061423","outline":"#9a8f80","on-secondary-container":"#adb8d3","inverse-surface":"#d6e4f9","on-surface-variant":"#d1c5b4","surface-container-highest":"#283646","surface-dim":"#061423","surface-container-high":"#1e2b3b","on-error-container":"#ffdad6","primary-container":"#c5a059","secondary-fixed-dim":"#bbc6e2","error-container":"#93000a","surface-variant":"#283646","surface-tint":"#e9c176","surface-container-lowest":"#020f1e","on-tertiary-fixed":"#3f0207","on-primary-container":"#4e3700","tertiary-fixed-dim":"#ffb3b0","tertiary-fixed":"#ffdad8","on-primary":"#412d00","tertiary":"#ffb3b0","inverse-primary":"#775a19","secondary":"#bbc6e2","on-surface":"#d6e4f9","secondary-container":"#3e4960","outline-variant":"#4e4639","on-secondary":"#263046","primary-fixed":"#ffdea5","error":"#ffb4ab","on-tertiary":"#5d171a","tertiary-container":"#ee8886","on-error":"#690005","on-primary-fixed":"#261900","surface-container-low":"#0f1c2c","primary":"#e9c176","on-tertiary-container":"#6b2223","on-primary-fixed-variant":"#5d4201","background":"#061423","inverse-on-surface":"#243141","surface-container":"#132030","on-background":"#d6e4f9","surface-bright":"#2d3a4a","secondary-fixed":"#d7e2ff","on-secondary-fixed-variant":"#3c475d","primary-fixed-dim":"#e9c176","on-secondary-fixed":"#101b30","on-tertiary-fixed-variant":"#7a2d2e"},borderRadius:{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},spacing:{"margin":"3rem","margin-mobile":"1.25rem","gutter-mobile":"1rem","space-md":"1rem","space-xl":"2.5rem","space-lg":"1.5rem","space-sm":"0.5rem","gutter":"1.5rem","space-xs":"0.25rem"},fontFamily:{"body-md":["Manrope"],"headline-md":["EB Garamond"],"headline-lg-mobile":["EB Garamond"],"label-lg":["Manrope"],"display":["EB Garamond"],"headline-sm":["EB Garamond"],"label-sm":["Manrope"],"title-md":["Manrope"],"headline-lg":["EB Garamond"],"body-sm":["Manrope"],"body-lg":["Manrope"],"label-md":["Manrope"]},fontSize:{"body-md":["0.9375rem",{"lineHeight":"1.55","letterSpacing":"0em","fontWeight":"400"}],"headline-md":["1.875rem",{"lineHeight":"1.3","letterSpacing":"0em","fontWeight":"500"}],"headline-lg-mobile":["2rem",{"lineHeight":"1.25","letterSpacing":"0em","fontWeight":"500"}],"label-lg":["0.875rem",{"lineHeight":"1.4","letterSpacing":"0.06em","fontWeight":"600"}],"display":["3.5rem",{"lineHeight":"1.1","letterSpacing":"-0.02em","fontWeight":"400"}],"headline-sm":["1.375rem",{"lineHeight":"1.4","letterSpacing":"0.01em","fontWeight":"600"}],"label-sm":["0.6875rem",{"lineHeight":"1.3","letterSpacing":"0.12em","fontWeight":"700"}],"title-md":["1.125rem",{"lineHeight":"1.5","letterSpacing":"0.015em","fontWeight":"600"}],"headline-lg":["2.5rem",{"lineHeight":"1.2","letterSpacing":"-0.01em","fontWeight":"500"}],"body-sm":["0.8125rem",{"lineHeight":"1.5","letterSpacing":"0.01em","fontWeight":"400"}],"body-lg":["1.0625rem",{"lineHeight":"1.6","letterSpacing":"0em","fontWeight":"400"}],"label-md":["0.75rem",{"lineHeight":"1.35","letterSpacing":"0.08em","fontWeight":"600"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 left-0 w-full z-50 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_12px_32px_-4px_rgba(4,8,15,0.75)]"><div class="h-20 w-full px-margin flex items-center justify-between"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-md"><div class="relative flex items-center justify-center w-11 h-11 rounded-DEFAULT bg-surface-container-high"><svg class="w-7 h-7 text-primary" fill="none" viewbox="0 0 40 32" xmlns="http://www.w3.org/2000/svg"><path d="M2 4L38 16L2 28V4Z" fill="currentColor" fill-opacity="0.15" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5"></path><path d="M13 16L14.8 11.2L19.5 13L15.8 16.5L18.2 21L13.8 18.2L10.5 21.5L11.5 16.8L8 14L12.5 14L13 16Z" fill="#d6e4f9"></path><circle cx="3" cy="4" fill="currentColor" r="1.5"></circle><circle cx="3" cy="28" fill="currentColor" r="1.5"></circle></svg></div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm uppercase tracking-wider text-primary">White Star Line</span><span class="font-label-sm text-label-sm uppercase tracking-widest text-outline">Predictive Registry • 1912</span></div></div><div class="h-8 w-[1px] bg-surface-container-highest"></div><div class="flex flex-col"><span class="font-label-sm text-label-sm text-secondary tracking-widest uppercase">Vessel Trajectory &amp; Telemetry</span><span class="font-body-sm text-body-sm text-on-surface-variant font-medium">S.S. Titanic • Southampton to NYC - Abril 1912</span></div></div><nav class="hidden xl:flex items-center gap-space-sm" data-active-classes="bg-primary-container text-on-primary-container font-bold rounded-DEFAULT"><a class="px-space-md py-space-sm font-label-md text-label-md uppercase text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="manifesto-de-inferencia" href="#">Manifesto de Inferência</a><a class="px-space-md py-space-sm font-label-md text-label-md uppercase text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="registros-historicos" href="#">Registros Históricos</a><a class="px-space-md py-space-sm font-label-md text-label-md uppercase text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="metricas-do-modelo" href="#">Métricas do Modelo</a><a class="px-space-md py-space-sm font-label-md text-label-md uppercase text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="arquivo-harland-and-wolff" href="#">Arquivo Harland &amp; Wolff</a></nav><div class="flex items-center gap-space-lg"><div class="hidden md:flex items-center gap-space-sm bg-surface-container-low px-space-md py-space-xs rounded-DEFAULT"><div class="w-1.5 h-1.5 rounded-full bg-primary"></div><span class="font-label-sm text-label-sm uppercase tracking-widest text-primary">Archivist Verified</span></div><div class="h-6 w-[1px] bg-surface-container-highest hidden md:block"></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-surface min-h-screen"><div class="flex flex-col w-full">
+<!-- Top Archival Header -->
+<section class="relative w-full px-margin pt-space-xl pb-space-lg bg-surface-container-lowest overflow-hidden shadow-xl">
+<div class="absolute -right-16 -top-24 w-96 h-96 rounded-full bg-primary/5 blur-3xl pointer-events-none"></div>
+<div class="absolute right-12 top-6 opacity-10 pointer-events-none select-none text-primary">
+<svg class="w-64 h-64" fill="none" stroke="currentColor" viewbox="0 0 100 100">
+<circle cx="50" cy="50" r="46" stroke-dasharray="2 3" stroke-width="0.75"></circle>
+<circle cx="50" cy="50" r="38" stroke-width="0.5"></circle>
+<circle cx="50" cy="50" fill="currentColor" r="4"></circle>
+<path d="M50 4 L53 46 L96 50 L53 54 L50 96 L47 54 L4 50 L47 46 Z" stroke-width="0.75"></path>
+<text class="font-headline-sm text-[8px]" fill="currentColor" x="47" y="14">N</text>
+<text class="font-headline-sm text-[8px]" fill="currentColor" x="86" y="52">E</text>
+<text class="font-headline-sm text-[8px]" fill="currentColor" x="48" y="90">S</text>
+<text class="font-headline-sm text-[8px]" fill="currentColor" x="10" y="52">W</text>
+</svg>
+</div>
+<div class="max-w-[1440px] mx-auto flex flex-col md:flex-row md:items-end justify-between gap-space-md relative z-10">
+<div class="flex flex-col gap-space-xs max-w-3xl">
+<div class="flex items-center gap-space-sm flex-wrap">
+<span class="inline-flex items-center gap-1.5 px-space-sm py-space-xs bg-surface-container-high rounded-DEFAULT font-label-sm text-label-sm uppercase tracking-widest text-primary">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+            ML Ativo • Acurácia 82.4%
+          </span>
+<span class="text-outline font-label-sm text-label-sm uppercase tracking-widest">•</span>
+<span class="text-secondary font-label-sm text-label-sm uppercase tracking-widest">Southampton • 10 de Abril de 1912</span>
+<span class="text-outline font-label-sm text-label-sm uppercase tracking-widest">•</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-widest">Protocolo Lloyd's de Londres</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight mt-space-xs">
+          Manifesto de Passageiro &amp; Inferência Estatística
+        </h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+          Simulador analítico treinado sobre os manifestos de bordo e registros de perda da White Star Line. Projeta a probabilidade empírica de resgate segundo classe de acomodação, demografia e ordenamento de evacuação.
+        </p>
+</div>
+<div class="flex items-center gap-space-md bg-surface-container-low px-space-md py-space-sm rounded-DEFAULT shadow-sm">
+<div class="flex flex-col text-right">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Dataset de Treino</span>
+<span class="font-title-md text-title-md text-on-surface font-semibold">1.309 Registros Reais</span>
+</div>
+<div class="w-px h-8 bg-surface-container-highest"></div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Matriz Decisória</span>
+<span class="font-title-md text-title-md text-primary font-semibold">Gradient Boosted Trees</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Main Predictive Workspace -->
+<section class="w-full px-margin py-space-xl bg-surface">
+<div class="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-start">
+<!-- LEFT COLUMN: Predictive Inputs (7 Cols) -->
+<div class="lg:col-span-7 flex flex-col gap-space-lg">
+<!-- Section Intro bar -->
+<div class="flex items-center justify-between pb-space-sm bg-surface-container-low p-space-md rounded-DEFAULT">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">tune</span>
+<span class="font-label-md text-label-md uppercase tracking-wider text-on-surface">Variáveis Demográficas &amp; Embarque</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-widest">Entrada de Parâmetros</span>
+</div>
+<!-- 1. Gênero / Sexo (Prime demographic priority) -->
+<div class="flex flex-col gap-space-xs bg-surface-container-low p-space-md rounded-DEFAULT shadow-md">
+<div class="flex items-center justify-between">
+<label class="font-label-sm text-label-sm uppercase tracking-widest text-primary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">groups</span>
+              Gênero Demográfico
+            </label>
+<span class="font-label-sm text-label-sm text-secondary font-medium">Impacto no Modelo: +54% F / -38% M</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-xs">
+            A regra marítima anglo-saxônica “Mulheres e crianças primeiro” governou o acesso primário às turras de boreste e bombordo.
+          </p>
+<div class="grid grid-cols-2 gap-space-md mt-space-xs" id="gender-selector">
+<button class="gender-btn relative flex flex-col items-start p-space-md rounded-DEFAULT bg-surface-container-high transition-all text-left group" data-gender="female" type="button">
+<div class="w-full flex items-center justify-between mb-space-xs">
+<span class="material-symbols-outlined text-primary text-[28px]">female</span>
+<span class="gender-check w-4 h-4 rounded-full bg-primary/20 flex items-center justify-center">
+<span class="w-2 h-2 rounded-full bg-transparent"></span>
+</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface">Feminino</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Damas e Moças • Prioridade Evacuação</span>
+</button>
+<button class="gender-btn active relative flex flex-col items-start p-space-md rounded-DEFAULT bg-primary-container text-on-primary-container transition-all text-left group shadow-lg" data-gender="male" type="button">
+<div class="w-full flex items-center justify-between mb-space-xs">
+<span class="material-symbols-outlined text-on-primary-container text-[28px]">male</span>
+<span class="gender-check w-4 h-4 rounded-full bg-on-primary-container flex items-center justify-center">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-primary-container">Masculino</span>
+<span class="font-body-sm text-body-sm text-on-primary-container/80">Cavalheiros • Restrição de Embarque</span>
+</button>
+</div>
+</div>
+<!-- 2. Idade do Passageiro -->
+<div class="flex flex-col gap-space-xs bg-surface-container-low p-space-md rounded-DEFAULT shadow-md">
+<div class="flex items-center justify-between">
+<label class="font-label-sm text-label-sm uppercase tracking-widest text-primary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">calendar_today</span>
+              Idade Cronológica
+            </label>
+<div class="flex items-center gap-space-xs">
+<button class="w-7 h-7 bg-surface-container-high hover:bg-surface-container-highest text-primary flex items-center justify-center rounded-DEFAULT font-bold transition-colors" id="btn-age-minus" type="button">
+<span class="material-symbols-outlined text-[16px]">remove</span>
+</button>
+<span class="font-headline-sm text-headline-sm text-primary w-20 text-center font-bold" id="age-display">29 anos</span>
+<button class="w-7 h-7 bg-surface-container-high hover:bg-surface-container-highest text-primary flex items-center justify-center rounded-DEFAULT font-bold transition-colors" id="btn-age-plus" type="button">
+<span class="material-symbols-outlined text-[16px]">add</span>
+</button>
+</div>
+</div>
+<div class="relative py-space-sm flex items-center">
+<input class="w-full h-1.5 bg-surface-container-highest rounded-lg appearance-none cursor-pointer accent-primary" id="age-range" max="80" min="1" type="range" value="29"/>
+</div>
+<div class="flex justify-between items-center text-outline font-label-sm text-label-sm">
+<span>01 ano (Infante)</span>
+<span class="text-on-surface-variant">Média histórica a bordo: 29.6 anos</span>
+<span>80 anos (Senhorio)</span>
+</div>
+<div class="mt-space-xs p-space-sm bg-surface-container rounded-DEFAULT flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[18px]">info</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">
+              Crianças até 14 anos tiveram prioridade estatística duplicada na transferência para os botes dobráveis Engelhardt.
+            </span>
+</div>
+</div>
+<!-- 3. Classe do Bilhete (Pclass) -->
+<div class="flex flex-col gap-space-xs bg-surface-container-low p-space-md rounded-DEFAULT shadow-md">
+<div class="flex items-center justify-between">
+<label class="font-label-sm text-label-sm uppercase tracking-widest text-primary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">confirmation_number</span>
+              Classe de Acomodação • Pclass
+            </label>
+<span class="font-label-sm text-label-sm text-outline">Geografia dos Conveses</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-xs">
+            A verticalidade dos conveses determinou o tempo crítico de subida até a coberta de embarcações durante a inundação dos compartimentos estanques.
+          </p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-sm mt-space-xs" id="pclass-selector">
+<!-- 1st Class -->
+<button class="pclass-btn flex flex-col p-space-md rounded-DEFAULT bg-surface-container-high transition-all text-left group" data-pclass="1" type="button">
+<div class="flex items-center justify-between w-full mb-space-xs">
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded-DEFAULT bg-surface-container text-primary font-bold">1ª CLASSE</span>
+<span class="material-symbols-outlined text-primary text-[18px]">stars</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface">Salões Nobres</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-1">Conveses A, B, C</span>
+<span class="font-label-sm text-label-sm text-secondary mt-space-xs">Taxa Sobrevivência: 62%</span>
+</button>
+<!-- 2nd Class -->
+<button class="pclass-btn flex flex-col p-space-md rounded-DEFAULT bg-surface-container-high transition-all text-left group" data-pclass="2" type="button">
+<div class="flex items-center justify-between w-full mb-space-xs">
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded-DEFAULT bg-surface-container text-secondary font-bold">2ª CLASSE</span>
+<span class="material-symbols-outlined text-secondary text-[18px]">chair</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface">Intermediária</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-1">Conveses D, E</span>
+<span class="font-label-sm text-label-sm text-secondary mt-space-xs">Taxa Sobrevivência: 43%</span>
+</button>
+<!-- 3rd Class (Active by default for common passenger) -->
+<button class="pclass-btn active flex flex-col p-space-md rounded-DEFAULT bg-primary-container text-on-primary-container transition-all text-left group shadow-lg" data-pclass="3" type="button">
+<div class="flex items-center justify-between w-full mb-space-xs">
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded-DEFAULT bg-surface-container-lowest text-primary font-bold">3ª CLASSE</span>
+<span class="material-symbols-outlined text-on-primary-container text-[18px]">luggage</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-primary-container">Terceira Classe</span>
+<span class="font-body-sm text-body-sm text-on-primary-container/80 mt-1">Conveses F, G (Casco)</span>
+<span class="font-label-sm text-label-sm text-on-primary-container font-semibold mt-space-xs">Taxa Sobrevivência: 24%</span>
+</button>
+</div>
+</div>
+<!-- 4. Familiares a Bordo (SibSp + Parch) -->
+<div class="flex flex-col gap-space-xs bg-surface-container-low p-space-md rounded-DEFAULT shadow-md">
+<div class="flex items-center justify-between">
+<label class="font-label-sm text-label-sm uppercase tracking-widest text-primary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">diversity_1</span>
+              Laços Familiares a Bordo (Cônjuge, Pais, Filhos, Irmãos)
+            </label>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase" id="family-status-label">Viajando Sozinho (0 parentes)</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-xs">
+            Famílias pequenas (1 a 3 membros) registraram maior taxa de agrupamento; famílias numerosas enfrentaram extrema dificuldade nos portões de cisalhamento.
+          </p>
+<div class="flex items-center gap-space-sm mt-space-xs flex-wrap" id="family-selector">
+<button class="family-btn active px-space-md py-space-sm rounded-DEFAULT bg-primary-container text-on-primary-container font-label-md text-label-md uppercase tracking-wider font-bold transition-all shadow-sm" data-family="0" type="button">
+              0 • Desacompanhado
+            </button>
+<button class="family-btn px-space-md py-space-sm rounded-DEFAULT bg-surface-container-high text-on-surface hover:bg-surface-container-highest font-label-md text-label-md uppercase tracking-wider transition-all" data-family="1" type="button">
+              1 Parente
+            </button>
+<button class="family-btn px-space-md py-space-sm rounded-DEFAULT bg-surface-container-high text-on-surface hover:bg-surface-container-highest font-label-md text-label-md uppercase tracking-wider transition-all" data-family="2" type="button">
+              2 Parentes
+            </button>
+<button class="family-btn px-space-md py-space-sm rounded-DEFAULT bg-surface-container-high text-on-surface hover:bg-surface-container-highest font-label-md text-label-md uppercase tracking-wider transition-all" data-family="3" type="button">
+              3 Parentes
+            </button>
+<button class="family-btn px-space-md py-space-sm rounded-DEFAULT bg-surface-container-high text-on-surface hover:bg-surface-container-highest font-label-md text-label-md uppercase tracking-wider transition-all" data-family="4" type="button">
+              4 ou Mais
+            </button>
+</div>
+</div>
+<!-- 5. Porto de Embarque (Port of Embarkation) -->
+<div class="flex flex-col gap-space-xs bg-surface-container-low p-space-md rounded-DEFAULT shadow-md">
+<div class="flex items-center justify-between">
+<label class="font-label-sm text-label-sm uppercase tracking-widest text-primary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">anchor</span>
+              Porto de Embarque
+            </label>
+<span class="font-label-sm text-label-sm text-outline">Rota Transatlântica</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-sm mt-space-xs" id="port-selector">
+<button class="port-btn active p-space-md rounded-DEFAULT bg-primary-container text-on-primary-container transition-all text-left shadow-lg" data-port="S" type="button">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm font-bold">Southampton</span>
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded-DEFAULT bg-surface-container-lowest text-primary">S</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-primary-container/80 mt-1 block">10 de Abril • Manhã</span>
+<span class="font-label-sm text-label-sm text-on-primary-container mt-1 block">70% do contingente total</span>
+</button>
+<button class="port-btn p-space-md rounded-DEFAULT bg-surface-container-high text-on-surface hover:bg-surface-container-highest transition-all text-left" data-port="C" type="button">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm font-bold">Cherbourg</span>
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded-DEFAULT bg-surface-container text-secondary">C</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-1 block">10 de Abril • Entardecer</span>
+<span class="font-label-sm text-label-sm text-secondary mt-1 block">Alta proporção de 1ª classe</span>
+</button>
+<button class="port-btn p-space-md rounded-DEFAULT bg-surface-container-high text-on-surface hover:bg-surface-container-highest transition-all text-left" data-port="Q" type="button">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm font-bold">Queenstown</span>
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded-DEFAULT bg-surface-container text-secondary">Q</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-1 block">11 de Abril • Irlanda</span>
+<span class="font-label-sm text-label-sm text-secondary mt-1 block">Maioria emigrantes 3ª classe</span>
+</button>
+</div>
+</div>
+<!-- 6. Grand Action CTA Button -->
+<button class="w-full py-space-md px-space-xl bg-gradient-to-r from-primary via-primary-container to-primary text-on-primary rounded-DEFAULT shadow-xl hover:brightness-110 active:scale-[0.99] transition-all flex items-center justify-center gap-space-md cursor-pointer" id="btn-run-simulation" type="button">
+<span class="material-symbols-outlined text-[24px]">explore</span>
+<span class="font-label-lg text-label-lg uppercase tracking-widest font-bold">Calcular Probabilidade de Sobrevivência</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+<!-- RIGHT COLUMN: Archival Ticket & ML Output Panel (5 Cols) -->
+<div class="lg:col-span-5 flex flex-col gap-space-lg">
+<!-- Harland & Wolff Archival Vessel Visual -->
+<div class="relative w-full rounded-DEFAULT overflow-hidden bg-surface-container-low shadow-lg">
+<img class="w-full h-44 object-cover filter contrast-125 brightness-90" data-alt="Historical sepia and cold oceanic photograph of the RMS Titanic ocean liner docked at Southampton in April 1912, massive four smokestacks, dark hulls, deep night waters, authentic Edwardian archival photography style with vintage grain and brass tint." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0lMu_wGOESozH1LxMjqTxHRNlSLhKCJCswFakWL5dmyxqkxoMZbtBgQgHh3BRYg56MmUyNRGbZAoJfZTdTTWjpYul3W9MplD2cC8k9LbCJMcQ2GfE32QAbCJvW-DzXSW_nupgV_-SOlDyvmWCTDPMsxGR7SqS1ZsZfMQCfQoVlVtUpgzIBFPOsg20Cd8qfX34sC06mK8QJS2dAS7Vje454MnrAdkY00W8lSk6rs0"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/40 to-transparent"></div>
+<div class="absolute bottom-3 left-4 right-4 flex items-end justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary">Royal Mail Steamer Titanic</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Casco nº 401 • 46.328 Toneladas</span>
+</div>
+<span class="px-2 py-0.5 bg-surface-container-highest/80 backdrop-blur-md rounded-DEFAULT font-label-sm text-label-sm uppercase tracking-widest text-secondary">
+              Harland &amp; Wolff
+            </span>
+</div>
+</div>
+<!-- Simulated Vintage Ticket & Telemetry Manifest Card -->
+<div class="relative bg-surface-container-lowest p-space-lg rounded-DEFAULT shadow-2xl overflow-hidden">
+<!-- Ticket Perforation Header Accents -->
+<div class="flex items-center justify-between pb-space-sm mb-space-md">
+<div class="flex items-center gap-space-xs">
+<div class="w-2.5 h-2.5 rounded-full bg-primary"></div>
+<span class="font-headline-sm text-headline-sm text-primary uppercase tracking-wider">White Star Line</span>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm tracking-widest uppercase text-outline">Bilhete de Embarque</span>
+<p class="font-headline-sm text-headline-sm text-on-surface font-bold">Nº 24160 • Série AI</p>
+</div>
+</div>
+<!-- Ticket Metadata Matrix -->
+<div class="grid grid-cols-2 gap-space-sm p-space-md bg-surface-container-low rounded-DEFAULT mb-space-md">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Passageiro Projetado</span>
+<span class="font-body-md text-body-md text-on-surface font-semibold" id="ticket-passenger-desc">Cavalheiro (29a) • 3ª Classe</span>
+</div>
+<div class="flex flex-col text-right">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Porto • Tarifa Estimada</span>
+<span class="font-body-md text-body-md text-primary font-semibold" id="ticket-fare-desc">Southampton • £7 5s</span>
+</div>
+<div class="flex flex-col mt-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Acomodação Teórica</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant" id="ticket-deck-desc">Conveses F/G (Berço Inferior)</span>
+</div>
+<div class="flex flex-col text-right mt-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Matrícula de Quarentena</span>
+<span class="font-body-sm text-body-sm text-secondary">Aprovado pelo Oficial Médico</span>
+</div>
+</div>
+<!-- Prominent Circular Gauge / Dial -->
+<div class="flex flex-col items-center justify-center p-space-md bg-surface-container rounded-DEFAULT my-space-md relative">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-outline mb-space-xs">
+              Estimativa de Sobrevivência do Modelo
+            </span>
+<div class="relative w-48 h-48 flex items-center justify-center my-space-xs">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 160 160">
+<!-- Background dial track -->
+<circle class="text-surface-container-highest" cx="80" cy="80" fill="none" r="68" stroke="currentColor" stroke-linecap="round" stroke-width="10"></circle>
+<!-- Gauge Progress Arc -->
+<circle class="text-error transition-all duration-700 ease-out" cx="80" cy="80" fill="none" id="gauge-circle" r="68" stroke="currentColor" stroke-dasharray="427.2" stroke-dashoffset="341.76" stroke-linecap="round" stroke-width="10"></circle>
+</svg>
+<!-- Central Dial Metrics -->
+<div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+<span class="font-display text-display text-error font-bold leading-none tracking-tight" id="prob-percentage">20%</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant mt-1">Probabilidade</span>
+</div>
+</div>
+<!-- Risk Banner Pill -->
+<div class="flex items-center gap-space-xs px-space-md py-space-xs rounded-DEFAULT bg-error-container text-on-error-container mt-space-xs" id="risk-pill">
+<span class="material-symbols-outlined text-[16px]">warning</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest font-bold" id="risk-pill-text">Risco Elevado de Naufrágio</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs" id="lifeboat-assignment">
+              Bote Provável: <strong class="text-on-surface font-semibold">Nenhum (Esgotamento da Coberta)</strong>
+</span>
+</div>
+<!-- Feature Importance breakdown (SHAP / Feature weights) -->
+<div class="flex flex-col gap-space-xs mb-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary">Pesos de Importância do Algoritmo</span>
+<span class="font-label-sm text-label-sm text-outline">Valores SHAP Ponderados</span>
+</div>
+<!-- Feature 1: Gênero -->
+<div class="flex flex-col gap-1 p-space-xs bg-surface-container-low rounded-DEFAULT">
+<div class="flex justify-between font-body-sm text-body-sm">
+<span class="text-on-surface">Gênero Masculino</span>
+<span class="text-error font-bold" id="shap-gender">-38%</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container-highest rounded-full overflow-hidden flex">
+<div class="bg-error h-full transition-all duration-500" id="bar-gender" style="width: 76%;"></div>
+</div>
+</div>
+<!-- Feature 2: Pclass -->
+<div class="flex flex-col gap-1 p-space-xs bg-surface-container-low rounded-DEFAULT">
+<div class="flex justify-between font-body-sm text-body-sm">
+<span class="text-on-surface">3ª Classe (Compartimento Inferior)</span>
+<span class="text-error font-bold" id="shap-class">-24%</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container-highest rounded-full overflow-hidden flex">
+<div class="bg-error h-full transition-all duration-500" id="bar-class" style="width: 48%;"></div>
+</div>
+</div>
+<!-- Feature 3: Idade -->
+<div class="flex flex-col gap-1 p-space-xs bg-surface-container-low rounded-DEFAULT">
+<div class="flex justify-between font-body-sm text-body-sm">
+<span class="text-on-surface">Idade Adulta Ativa (29 anos)</span>
+<span class="text-error font-bold" id="shap-age">-4%</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container-highest rounded-full overflow-hidden flex">
+<div class="bg-error h-full transition-all duration-500" id="bar-age" style="width: 12%;"></div>
+</div>
+</div>
+<!-- Feature 4: Embarque -->
+<div class="flex flex-col gap-1 p-space-xs bg-surface-container-low rounded-DEFAULT">
+<div class="flex justify-between font-body-sm text-body-sm">
+<span class="text-on-surface">Porto de Southampton</span>
+<span class="text-primary font-bold" id="shap-port">+2%</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container-highest rounded-full overflow-hidden flex">
+<div class="bg-primary h-full transition-all duration-500" id="bar-port" style="width: 8%;"></div>
+</div>
+</div>
+</div>
+<!-- Evacuation Historical Context Card -->
+<div class="p-space-md bg-surface-container-high rounded-DEFAULT flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-sm text-primary">
+<span class="material-symbols-outlined text-[18px]">history_edu</span>
+<span class="font-headline-sm text-headline-sm">Contexto Histórico Real • 14-15 de Abril</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Haviam <strong>2.224 almas a bordo</strong> e apenas 20 embarcações de salvamento somando capacidade para 1.178 ocupantes. Apenas <strong>710 pessoas sobreviveram</strong> no congelante Atlântico Norte durante o lapso de 2 horas e 40 minutos entre a colisão com o iceberg e o afundamento final.
+            </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Script for Dynamic Statistical Simulation -->
+<script>
+    (function initTitanicPredictor() {
+      // Internal Simulation State
+      const state = {
+        gender: 'male',
+        age: 29,
+        pclass: 3,
+        family: 0,
+        port: 'S'
+      };
+
+      const genderBtns = document.querySelectorAll('.gender-btn');
+      const pclassBtns = document.querySelectorAll('.pclass-btn');
+      const familyBtns = document.querySelectorAll('.family-btn');
+      const portBtns = document.querySelectorAll('.port-btn');
+      const ageInput = document.getElementById('age-range');
+      const ageDisplay = document.getElementById('age-display');
+      const btnAgeMinus = document.getElementById('btn-age-minus');
+      const btnAgePlus = document.getElementById('btn-age-plus');
+      const btnRun = document.getElementById('btn-run-simulation');
+
+      // Metric elements
+      const probDisplay = document.getElementById('prob-percentage');
+      const gaugeCircle = document.getElementById('gauge-circle');
+      const riskPill = document.getElementById('risk-pill');
+      const riskPillText = document.getElementById('risk-pill-text');
+      const ticketDesc = document.getElementById('ticket-passenger-desc');
+      const ticketFare = document.getElementById('ticket-fare-desc');
+      const ticketDeck = document.getElementById('ticket-deck-desc');
+      const lifeboatAssignment = document.getElementById('lifeboat-assignment');
+      const familyStatusLabel = document.getElementById('family-status-label');
+
+      // SHAP elements
+      const shapGender = document.getElementById('shap-gender');
+      const barGender = document.getElementById('bar-gender');
+      const shapClass = document.getElementById('shap-class');
+      const barClass = document.getElementById('bar-class');
+      const shapAge = document.getElementById('shap-age');
+      const barAge = document.getElementById('bar-age');
+      const shapPort = document.getElementById('shap-port');
+      const barPort = document.getElementById('bar-port');
+
+      function calculateProbability() {
+        // High fidelity baseline mimicking a Logistic Regression / Tree ensemble
+        // on Titanic Kaggle / British Board of Trade dataset
+        let score = 0.38; // base historical average ~38%
+
+        // Gender Impact
+        let genderShap = 0;
+        if (state.gender === 'female') {
+          genderShap = 0.44;
+          score += genderShap;
+        } else {
+          genderShap = -0.22;
+          score += genderShap;
+        }
+
+        // Class Impact
+        let classShap = 0;
+        if (state.pclass === 1) {
+          classShap = 0.24;
+          score += classShap;
+        } else if (state.pclass === 2) {
+          classShap = 0.05;
+          score += classShap;
+        } else {
+          classShap = -0.16;
+          score += classShap;
+        }
+
+        // Age impact
+        let ageShap = 0;
+        if (state.age <= 12) {
+          ageShap = 0.18;
+          score += ageShap;
+        } else if (state.age > 50) {
+          ageShap = -0.09;
+          score += ageShap;
+        } else {
+          ageShap = -0.03;
+          score += ageShap;
+        }
+
+        // Family Impact (1 to 3 is optimal, 0 is lone, 4+ is penalized)
+        if (state.family >= 1 && state.family <= 3) {
+          score += 0.08;
+        } else if (state.family > 3) {
+          score -= 0.12;
+        }
+
+        // Port of Embarkation (Cherbourg had more wealthy passengers)
+        let portShap = 0;
+        if (state.port === 'C') {
+          portShap = 0.04;
+          score += portShap;
+        } else if (state.port === 'Q') {
+          portShap = -0.02;
+          score += portShap;
+        } else {
+          portShap = 0.01;
+          score += portShap;
+        }
+
+        // Clamp between 0.04 and 0.96
+        const finalProb = Math.min(0.96, Math.max(0.04, score));
+        return {
+          probability: Math.round(finalProb * 100),
+          genderShap,
+          classShap,
+          ageShap,
+          portShap
+        };
+      }
+
+      function updateUI() {
+        const { probability, genderShap, classShap, ageShap, portShap } = calculateProbability();
+
+        // Update Gauge
+        probDisplay.textContent = probability + '%';
+        const circumference = 2 * Math.PI * 68; // ~427.2
+        const offset = circumference - (probability / 100) * circumference;
+        gaugeCircle.style.strokeDashoffset = offset;
+
+        // Colors & Risk levels
+        if (probability >= 60) {
+          probDisplay.className = 'font-display text-display text-primary font-bold leading-none tracking-tight';
+          gaugeCircle.className.baseVal = 'text-primary transition-all duration-700 ease-out';
+          riskPill.className = 'flex items-center gap-space-xs px-space-md py-space-xs rounded-DEFAULT bg-primary-container text-on-primary-container mt-space-xs shadow-sm';
+          riskPillText.textContent = 'Chance Altamente Favorável';
+          lifeboatAssignment.innerHTML = 'Bote Provável: <strong class="text-primary font-semibold">Bote 4, 8 ou Dobrável D</strong>';
+        } else if (probability >= 40) {
+          probDisplay.className = 'font-display text-display text-secondary font-bold leading-none tracking-tight';
+          gaugeCircle.className.baseVal = 'text-secondary transition-all duration-700 ease-out';
+          riskPill.className = 'flex items-center gap-space-xs px-space-md py-space-xs rounded-DEFAULT bg-secondary-container text-on-secondary-container mt-space-xs shadow-sm';
+          riskPillText.textContent = 'Sobrevivência Imprevisível';
+          lifeboatAssignment.innerHTML = 'Bote Provável: <strong class="text-secondary font-semibold">Bote 12, 14 ou Resgate Marítimo</strong>';
+        } else {
+          probDisplay.className = 'font-display text-display text-error font-bold leading-none tracking-tight';
+          gaugeCircle.className.baseVal = 'text-error transition-all duration-700 ease-out';
+          riskPill.className = 'flex items-center gap-space-xs px-space-md py-space-xs rounded-DEFAULT bg-error-container text-on-error-container mt-space-xs shadow-sm';
+          riskPillText.textContent = 'Risco Elevado de Naufrágio';
+          lifeboatAssignment.innerHTML = 'Bote Provável: <strong class="text-error font-semibold">Nenhum (Esgotamento da Coberta)</strong>';
+        }
+
+        // Update Passenger Ticket Desc
+        const genderWord = state.gender === 'female' ? 'Dama' : 'Cavalheiro';
+        ticketDesc.textContent = `${genderWord} (${state.age}a) • ${state.pclass}ª Classe`;
+
+        // Update Fare & Deck
+        if (state.pclass === 1) {
+          ticketFare.textContent = state.port === 'C' ? 'Cherbourg • £87 2s' : 'Southampton • £75 0s';
+          ticketDeck.textContent = 'Conveses A/B (Suíte Nobre)';
+        } else if (state.pclass === 2) {
+          ticketFare.textContent = state.port === 'C' ? 'Cherbourg • £16 4s' : 'Southampton • £13 0s';
+          ticketDeck.textContent = 'Conveses D/E (Cabine Dupla)';
+        } else {
+          ticketFare.textContent = state.port === 'Q' ? 'Queenstown • £7 15s' : 'Southampton • £7 5s';
+          ticketDeck.textContent = 'Conveses F/G (Berço Inferior)';
+        }
+
+        // Update SHAP Breakdown labels and progress bars
+        shapGender.textContent = (genderShap > 0 ? '+' : '') + Math.round(genderShap * 100) + '%';
+        shapGender.className = (genderShap > 0 ? 'text-primary' : 'text-error') + ' font-bold';
+        barGender.className = (genderShap > 0 ? 'bg-primary' : 'bg-error') + ' h-full transition-all duration-500';
+        barGender.style.width = Math.min(100, Math.abs(genderShap) * 160) + '%';
+
+        shapClass.textContent = (classShap > 0 ? '+' : '') + Math.round(classShap * 100) + '%';
+        shapClass.className = (classShap > 0 ? 'text-primary' : 'text-error') + ' font-bold';
+        barClass.className = (classShap > 0 ? 'bg-primary' : 'bg-error') + ' h-full transition-all duration-500';
+        barClass.style.width = Math.min(100, Math.abs(classShap) * 160) + '%';
+
+        shapAge.textContent = (ageShap > 0 ? '+' : '') + Math.round(ageShap * 100) + '%';
+        shapAge.className = (ageShap > 0 ? 'text-primary' : 'text-error') + ' font-bold';
+        barAge.className = (ageShap > 0 ? 'bg-primary' : 'bg-error') + ' h-full transition-all duration-500';
+        barAge.style.width = Math.min(100, Math.abs(ageShap) * 160) + '%';
+
+        shapPort.textContent = (portShap > 0 ? '+' : '') + Math.round(portShap * 100) + '%';
+        shapPort.className = (portShap > 0 ? 'text-primary' : 'text-secondary') + ' font-bold';
+        barPort.className = (portShap > 0 ? 'bg-primary' : 'bg-secondary') + ' h-full transition-all duration-500';
+        barPort.style.width = Math.min(100, Math.abs(portShap) * 200) + '%';
+      }
+
+      // Gender handlers
+      genderBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          genderBtns.forEach(b => {
+            b.classList.remove('active', 'bg-primary-container', 'text-on-primary-container', 'shadow-lg');
+            b.classList.add('bg-surface-container-high', 'text-on-surface');
+            const dot = b.querySelector('.gender-check span');
+            if (dot) dot.classList.replace('bg-primary-container', 'bg-transparent');
+          });
+          btn.classList.add('active', 'bg-primary-container', 'text-on-primary-container', 'shadow-lg');
+          btn.classList.remove('bg-surface-container-high', 'text-on-surface');
+          const activeDot = btn.querySelector('.gender-check span');
+          if (activeDot) activeDot.classList.replace('bg-transparent', 'bg-primary-container');
+          
+          state.gender = btn.dataset.gender;
+          updateUI();
+        });
+      });
+
+      // Age handlers
+      function setAge(newAge) {
+        state.age = Math.min(80, Math.max(1, newAge));
+        ageInput.value = state.age;
+        ageDisplay.textContent = state.age + ' anos';
+        updateUI();
+      }
+
+      ageInput.addEventListener('input', (e) => setAge(parseInt(e.target.value, 10)));
+      btnAgeMinus.addEventListener('click', () => setAge(state.age - 1));
+      btnAgePlus.addEventListener('click', () => setAge(state.age + 1));
+
+      // Pclass handlers
+      pclassBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          pclassBtns.forEach(b => {
+            b.classList.remove('active', 'bg-primary-container', 'text-on-primary-container', 'shadow-lg');
+            b.classList.add('bg-surface-container-high', 'text-on-surface');
+          });
+          btn.classList.add('active', 'bg-primary-container', 'text-on-primary-container', 'shadow-lg');
+          btn.classList.remove('bg-surface-container-high', 'text-on-surface');
+          state.pclass = parseInt(btn.dataset.pclass, 10);
+          updateUI();
+        });
+      });
+
+      // Family handlers
+      familyBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          familyBtns.forEach(b => {
+            b.classList.remove('active', 'bg-primary-container', 'text-on-primary-container', 'font-bold');
+            b.classList.add('bg-surface-container-high', 'text-on-surface');
+          });
+          btn.classList.add('active', 'bg-primary-container', 'text-on-primary-container', 'font-bold');
+          btn.classList.remove('bg-surface-container-high', 'text-on-surface');
+          state.family = parseInt(btn.dataset.family, 10);
+          
+          if (state.family === 0) {
+            familyStatusLabel.textContent = 'Viajando Sozinho (0 parentes)';
+          } else if (state.family === 1) {
+            familyStatusLabel.textContent = 'Casal ou Dupla (1 parente)';
+          } else {
+            familyStatusLabel.textContent = `Núcleo Familiar (${state.family} parentes)`;
+          }
+          updateUI();
+        });
+      });
+
+      // Port handlers
+      portBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          portBtns.forEach(b => {
+            b.classList.remove('active', 'bg-primary-container', 'text-on-primary-container', 'shadow-lg');
+            b.classList.add('bg-surface-container-high', 'text-on-surface');
+          });
+          btn.classList.add('active', 'bg-primary-container', 'text-on-primary-container', 'shadow-lg');
+          btn.classList.remove('bg-surface-container-high', 'text-on-surface');
+          state.port = btn.dataset.port;
+          updateUI();
+        });
+      });
+
+      // Action CTA
+      btnRun.addEventListener('click', () => {
+        btnRun.classList.add('ring-2', 'ring-primary', 'ring-offset-2', 'ring-offset-surface');
+        setTimeout(() => {
+          btnRun.classList.remove('ring-2', 'ring-primary', 'ring-offset-2', 'ring-offset-surface');
+        }, 300);
+        updateUI();
+      });
+
+      // Initial render
+      updateUI();
+    })();
+  </script>
+</div></main><footer class="w-full bg-surface-container-lowest py-space-xl"><div class="w-full px-margin flex flex-col md:flex-row items-center justify-between gap-space-md"><div class="flex items-center gap-space-md"><div class="flex flex-col"><span class="font-headline-sm text-headline-sm uppercase text-primary">White Star Line Maritime Intelligence</span><span class="font-body-sm text-body-sm text-on-surface-variant">Harland and Wolff Shipbuilders • Queen's Island, Belfast • Model Ver. 1912-RL</span></div></div><div class="flex items-center gap-space-lg text-on-surface-variant font-label-sm text-label-sm uppercase tracking-widest"><span class="hover:text-primary transition-colors cursor-pointer">Telemetry Protocol</span><span class="hover:text-primary transition-colors cursor-pointer">Naval Lloyd's Registry</span><span class="hover:text-primary transition-colors cursor-pointer">Victorian Archival Code</span></div><div class="text-outline font-label-sm text-label-sm uppercase tracking-widest">MMXII Oceanic Navigation AI Systems</div></div></footer></body></html>
